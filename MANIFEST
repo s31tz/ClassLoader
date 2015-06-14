@@ -1,7 +1,8 @@
 Build.PL                        Build-Skript
 lib/ClassLoader.pm              Klasse
+INSTALLATION                    Installationsanleitung
 MANIFEST                        This list of files
-README.pod                      Beschreibung
+README.pod                      Dokumentation
 slides/classloader.tex
 slides/classloader_wiki.txt
 slides/README
