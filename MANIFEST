@@ -1,0 +1,10 @@
+Build.PL
+lib/ClassLoader.pm
+MANIFEST			This list of files
+README.md
+slides/classloader.tex
+slides/classloader_wiki.txt
+slides/README
+t/ClassLoader.t
+t/ClassLoader/MyClass1.pm
+t/ClassLoader/MyClass2.pm

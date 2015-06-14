@@ -1,0 +1,29 @@
+Präsentationssoftware installieren:
+
+  # apt-get install wiki2beamer
+
+Präsentation erzeugen:
+
+  $ make
+
+Präsentation zeigen:
+
+  $ evince classloader.pdf
+
+Probleme beim Einbinden von Grafiken:
+
+Erzeuge ich eine PNG-Datei mit dia(1) und lade sie mit
+<<<FILE>>, wird das Bild falsch skaliert (zu groß)
+und hat eine schlechte Qualität. Alle Versuche
+mit verschiedenen Bildgrößen und Verkleinerungsfaktoren
+zu arbeiten, sind fehlgeschlagen. Die Bildqualität
+der PNG-Rastergrafik bleibt schlecht.
+
+Erst die Erzeugung eines PDF brachte Erfolg: Das Bild
+wird zwar immer noch zu groß skaliert, aber die
+Qualität ist gut. Durch den Verkleinerungsfaktor
+0.56 ließ sich das konkrete Bild so einbinden,
+dass es über die volle Höhe geht. Die Direktive
+<[center] ... [center]> wirkt allerdings nicht richtig -
+das Bild rutscht etwas nach unten und wird nicht zentriert -,
+so dass sie besser weggelassen wird.
