@@ -60,7 +60,7 @@ Das Programm benötigt unter Umständen weniger Speicher, da keine
 
 =head2 Was ist ein Klassen-Modul?
 
-Unter einem Klassen-Modul verstehen wir eine pm-Datei, die
+Unter einem Klassen-Modul verstehen wir eine .pm-Datei, die
 gemäß Perl-Konventionen eine Klasse definiert, d.h. die
 
 =over 4
@@ -88,10 +88,12 @@ definiert und irgendwo unter C<@INC> installiert. Sie hat den Inhalt:
     package My::Class;
     use base qw/<BASECLASSES>/;
     
-    <METHODS>
+    <SOURCE>
     
     1;
 
+Hierbei ist C<BASECLASSES> die Liste der Basisklassen und
+C<SOURCE> der Quelltext der Klasse mit den Methodendefinitionen.
 Das Laden der Basisklassen-Module geschieht hier mittels
 C<use base>. Es ist genauso möglich, die Basisklassen-Module per
 C<use> zu laden und C<@ISA> zuzuweisen, was aber umständlicher ist.
