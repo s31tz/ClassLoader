@@ -217,7 +217,7 @@ werden kann.
 
 =head1 DOWNLOAD
 
-git clone https://github.com/s31tz/ClassLoader.git
+$ git clone https://github.com/s31tz/ClassLoader.git
 
 =head1 VERSION
 
