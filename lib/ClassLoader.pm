@@ -303,33 +303,7 @@ werden kann.
 
 =head1 DOWNLOAD
 
-=over 4
-
-=item CPAN
-
-=over 2
-
-=item *
-
-http://search.cpan.org/~fseitz/ClassLoader/
-
-=back
-
-=item GitHub
-
-=over 2
-
-=item *
-
 git clone https://github.com/s31tz/ClassLoader.git
-
-=item *
-
-https://github.com/s31tz/ClassLoader/archive/master.zip
-
-=back
-
-=back
 
 =head1 VERSION
 
