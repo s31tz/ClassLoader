@@ -301,10 +301,6 @@ werden kann.
 
 =back
 
-=head1 VERSION
-
-1.07
-
 =head1 DOWNLOAD
 
 =over 4
@@ -334,6 +330,10 @@ https://github.com/s31tz/ClassLoader/archive/master.zip
 =back
 
 =back
+
+=head1 VERSION
+
+1.07
 
 =head1 AUTHOR
 
