@@ -92,13 +92,14 @@ definiert und irgendwo unter C<@INC> installiert. Sie hat den Inhalt:
     
     1;
 
-Hierbei ist C<BASECLASSES> die Liste der Basisklassen und
-C<SOURCE> der Quelltext der Klasse mit den Methodendefinitionen.
-Das Laden der Basisklassen-Module geschieht hier mittels
-C<use base>. Es ist genauso möglich, die Basisklassen-Module per
-C<use> zu laden und C<@ISA> zuzuweisen, was aber umständlicher ist.
+Hierbei ist <BASECLASSES> die Liste der Basisklassen und <SOURCE>
+der Quelltext der Klasse (einschließlich der
+Methodendefinitionen). Das Laden der Basisklassen-Module geschieht
+hier mittels C<use base>. Es ist genauso möglich, die
+Basisklassen-Module per C<use> zu laden und C<@ISA> zuzuweisen,
+was aber umständlicher ist.
 
-Eine pm-Datei, die diesen Konventionen genügt, ist ein
+Eine .pm-Datei, die diesen Konventionen genügt, ist ein
 Klassen-Modul und wird von I<<ClassLoader>> automatisch beim ersten
 Methodenzugriff geladen.
 
