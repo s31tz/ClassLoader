@@ -311,7 +311,7 @@ $ git clone https://github.com/s31tz/ClassLoader.git
 
 =head1 AUTHOR
 
-Frank Seitz, http://www.fseitz.de/
+Frank Seitz, http://fseitz.de/
 
 =head1 COPYRIGHT
 
