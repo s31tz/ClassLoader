@@ -49,12 +49,13 @@ benötigt
 
 =item *
 
-Die Startzeit des Programms verkürzt sich
+Die Startzeit des Programms verkürzt sich, da später benötigte
+Klassen später geladen werden
 
 =item *
 
 Das Programm benötigt unter Umständen weniger Speicher, da keine
-überflüssigen Module geladen werden
+überflüssigen Klassen geladen werden
 
 =back
 
