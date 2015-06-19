@@ -41,7 +41,7 @@ benötigt
 =item *
 
 Die Startzeit des Programms verkürzt sich, da später benötigte
-Klassen später geladen werden
+Klassen erst später geladen werden
 
 =item *
 
@@ -173,14 +173,14 @@ I<ClassLoader>.
 
 =head3 Description
 
-Lade Klassen-Modul und führe den Methodenaufruf durch.
-Die Argumente und der Returnwert entsprechen denen der gerufenen Methode.
-Schlägt das Laden des Moduls fehl, löst die Methode eine Exception aus
-(siehe oben).
+Die Methode lädt fehlende Klassen-Module und führt ihren ersten
+Methodenaufruf durch. Die Argumente und der Returnwert entsprechen
+denen der gerufenen Methode. Schlägt das Laden des Klassen-Moduls fehl,
+löst die Methode eine Exception aus (siehe oben).
 
 Die AUTOLOAD-Methode implementiert die Funktionalität des
-Moduls. Sie wird nicht direkt, sondern vom Perl-Interpreter
-gerufen, wenn eine Methode nicht gefunden wird.
+Moduls ClassLoader. Sie wird nicht direkt, sondern vom
+Perl-Interpreter gerufen, wenn eine Methode nicht gefunden wird.
 
 =head1 CAVEATS
 
