@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 
-# -----------------------------------------------------------------------------
-
 # Unit-Test ohne Testklasse
 
 use Test::More tests=>5;
