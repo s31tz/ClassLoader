@@ -2,7 +2,7 @@
 
 use Test::More tests=>5;
 
-use_ok 'R1::ClassLoader';
+use_ok 'ClassLoader';
 
 (my $classPath = $0) =~ s/\.t$//;
 push @INC,$classPath; # Verzeichnis mit Testklassen
