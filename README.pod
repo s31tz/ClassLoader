@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-ClassLoader - Load classes automatically
+ClassLoader - Load Perl classes automatically
 
 =head1 SYNOPSIS
 
@@ -92,12 +92,12 @@ Basisklassen-Module per C<use> zu laden und C<@ISA> zuzuweisen,
 was aber umständlicher ist.
 
 Eine .pm-Datei, die diesen Konventionen genügt, ist ein
-Klassen-Modul und wird von I<ClassLoader> automatisch beim ersten
+Klassen-Modul und wird von I< ClassLoader > automatisch beim ersten
 Methodenzugriff geladen.
 
 =head2 Wie funktioniert das?
 
-I<ClassLoader> installiert sich als Basisklasse von I<UNIVERSAL> und
+I< ClassLoader > installiert sich als Basisklasse von I<UNIVERSAL> und
 definiert eine Methode C<AUTOLOAD>, bei der sämtliche
 Methodenaufrufe ankommen, die vom Perl-Interpreter nicht aufgelöst
 werden können. Die AUTOLOAD-Methode lädt das benötigte
@@ -105,7 +105,7 @@ Klassen-Modul und ruft die betreffende Methode auf. Existiert das
 Klassen-Modul nicht oder enthält es die gerufene Methode nicht, wird
 eine Exception ausgelöst.
 
-Die AUTOLOAD-Methode, die I<ClassLoader> definiert, ist recht einfach
+Die AUTOLOAD-Methode, die I< ClassLoader > definiert, ist recht einfach
 (Fehlerbehandlung hier vereinfacht):
 
     sub AUTOLOAD {
@@ -157,11 +157,11 @@ Aufbau des Exception-Texts:
 
 =head2 Kann eine Klasse selbst eine AUTOLOAD-Methode haben?
 
-Ja, denn die AUTOLOAD-Methode von I<ClassLoader> wird I<vor> dem Laden
+Ja, denn die AUTOLOAD-Methode von I< ClassLoader > wird I<vor> dem Laden
 der Klasse angesprochen. Alle späteren Methoden-Aufrufe der Klasse
 werden über die Klasse selbst aufgelöst. Wenn die Klasse eine
 AUTOLOAD-Methode besitzt, funktioniert diese genau so wie ohne
-I<ClassLoader>.
+I< ClassLoader >.
 
 =head1 METHODS
 
@@ -203,13 +203,13 @@ erfolgen. Am besten lädt man solche Module auch explizit.
 Über Aufruf der Methode C<import()> ist es nicht möglich, ein
 Modul automatisch zu laden, da Perl bei Nichtexistenz von
 C<import()> C<AUTOLOAD()> nicht aufruft, sondern den Aufruf
-ignoriert. Man kann durch $class->import() also nicht
+ignoriert. Man kann durch  $class->import()  also nicht
 das Laden eines Klassen-Moduls auslösen.
 
 =item *
 
 Module, die nicht objektorientiert, sondern Funktionssammlungen
-sind, werden von I<ClassLoader> nicht behandelt. Diese sollten
+sind, werden von I< ClassLoader > nicht behandelt. Diese sollten
 per C<use> geladen werden. Es gibt im Perl-Core ein Pragma C<autouse>,
 das alternativ zum automatischen Laden von Funktionen verwendet
 werden kann.
@@ -230,7 +230,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2008-2015 Frank Seitz
+Copyright (C) 2008-2015 Frank Seitz
 
 =head1 LICENSE
 
