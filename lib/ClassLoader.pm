@@ -302,10 +302,6 @@ werden kann.
 
 =back
 
-=head1 DOWNLOAD
-
-$ git clone https://github.com/s31tz/ClassLoader.git
-
 =head1 VERSION
 
 1.07
