@@ -36,7 +36,7 @@ Man muss keine C<use>-Aufrufe mehr schreiben
 =item *
 
 Es werden nur die Klassen geladen, die das Programm tatsächlich
-benötigt
+nutzt
 
 =item *
 
@@ -45,8 +45,8 @@ Klassen erst später geladen werden
 
 =item *
 
-Das Programm benötigt unter Umständen weniger Speicher, da keine
-nicht-benötigten Klassen geladen werden
+Das Programm benötigt unter Umständen weniger Speicher, da Klassen,
+die nicht genutzt werden, auch nicht geladen werden
 
 =back
 
