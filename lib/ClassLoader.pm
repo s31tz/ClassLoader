@@ -251,6 +251,9 @@ sub AUTOLOAD {
     # @_: Methodenargumente
 
     my ($class,$sub) = our $AUTOLOAD =~ /^(.*)::(\w+)$/;
+    if (!defined $sub) {
+        warn "OOPS: AUTOLOAD=$AUTOLOAD\n";
+    }
     return if $sub !~ /[^A-Z]/;
 
     eval "use $class";
