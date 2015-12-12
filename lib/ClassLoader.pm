@@ -317,7 +317,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2008-2015 Frank Seitz
+Copyright (C) Frank Seitz
 
 =head1 LICENSE
 
