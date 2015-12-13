@@ -232,4 +232,3 @@ Copyright (C) Frank Seitz
 
 This code is free software. You can redistribute it and/or modify
 it under the same terms as Perl itself.
-
