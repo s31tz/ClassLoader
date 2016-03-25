@@ -224,10 +224,6 @@ werden kann.
 
 Frank Seitz, L<http://fseitz.de/>
 
-=head1 COPYRIGHT
-
-Copyright (C) Frank Seitz
-
 =head1 LICENSE
 
 This code is free software. You can redistribute it and/or modify
