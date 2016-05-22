@@ -3,7 +3,7 @@ package ClassLoader;
 use strict;
 use warnings;
 
-our $VERSION = 1.07;
+our $VERSION = 1.08;
 
 # -----------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ our $VERSION = 1.07;
 
 =head1 NAME
 
-ClassLoader - Load Perl Classes Automatically
+ClassLoader - Load Perl classes automatically
 
 =head1 SYNOPSIS
 
@@ -307,11 +307,15 @@ werden kann.
 
 =head1 VERSION
 
-1.07
+1.08
 
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de/>
+
+=head1 COPYRIGHT
+
+Copyright (C) 2008-2016 Frank Seitz
 
 =head1 LICENSE
 
