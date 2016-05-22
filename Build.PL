@@ -13,6 +13,9 @@ my $builder = Module::Build->new(
     #dist_abstract=>'~',
     #dist_version_from=>'lib/ClassLoader.pm',
     recursive_test_files=>1,
+    configure_requires => {
+        'Module::Build' => 0.42,
+    },
     build_requires=>{
         'Test::More'=>0,
     },
