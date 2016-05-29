@@ -3,7 +3,7 @@ package ClassLoader;
 use strict;
 use warnings;
 
-our $VERSION = 1.09;
+our $VERSION = 1.10;
 
 # -----------------------------------------------------------------------------
 
@@ -307,7 +307,7 @@ werden kann.
 
 =head1 VERSION
 
-1.09
+1.10
 
 =head1 AUTHOR
 
@@ -315,11 +315,11 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2008-2016 Frank Seitz
+Copyright (C) 2016 Frank Seitz
 
 =head1 LICENSE
 
-This code is free software. You can redistribute it and/or modify
+This code is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
