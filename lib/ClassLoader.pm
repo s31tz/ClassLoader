@@ -183,13 +183,15 @@ unshift @UNIVERSAL::ISA,'ClassLoader';
 
 =head1 METHODS
 
-=head2 AUTOLOAD() - Lade Klassen-Modul
+=head2 Autoload-Methode
 
-=head3 Synopsis
+=head3 AUTOLOAD() - Lade Klassen-Modul
+
+=head4 Synopsis
 
     $this->AUTOLOAD;
 
-=head3 Description
+=head4 Description
 
 Die Methode lädt fehlende Klassen-Module und führt ihren ersten
 Methodenaufruf durch. Die Argumente und der Returnwert entsprechen
