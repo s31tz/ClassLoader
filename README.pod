@@ -2,13 +2,13 @@
 
 =head1 NAME
 
-ClassLoader - Load Perl classes automatically
+ClassLoader - Lade Perl-Klassen automatisch
 
 =head1 SYNOPSIS
 
     use ClassLoader;
     
-    my $obj = My::Class->new; # loads My/Class.pm
+    my $obj = My::Class->new; # lädt My/Class.pm
 
 =head1 DESCRIPTION
 

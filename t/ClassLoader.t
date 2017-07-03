@@ -4,9 +4,12 @@ use Test::More tests=>5;
 
 use_ok 'ClassLoader';
 
-(my $classPath = $0) =~ s/\.t$//;
-push @INC,$classPath; # Verzeichnis mit Testklassen
+# (my $classPath = $0) =~ s/\.t$//;
+# push @INC,$classPath; # Verzeichnis mit Testklassen
 
+# FIXME: von Test::Class unabhängig machen
+push @INC,Test::Class->testPath('prty/test/data/class');
+    
 eval { InexistentClass->new };
 like $@,qr/CLASSLOADER-00001/,'Klassen-Modul existiert nicht';
 
