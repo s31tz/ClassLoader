@@ -3,7 +3,7 @@ package ClassLoader;
 use strict;
 use warnings;
 
-our $VERSION = 1.115;
+our $VERSION = 1.117;
 
 # -----------------------------------------------------------------------------
 
@@ -309,7 +309,7 @@ werden kann.
 
 =head1 VERSION
 
-1.115
+1.117
 
 =head1 AUTHOR
 
