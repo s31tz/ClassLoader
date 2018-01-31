@@ -220,7 +220,7 @@ werden kann.
 
 =head1 VERSION
 
-1.123
+1.124
 
 =head1 AUTHOR
 
