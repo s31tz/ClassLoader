@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use v5.10.0;
 
-our $VERSION = 1.125;
+our $VERSION = 1.131;
 
 # -----------------------------------------------------------------------------
 
@@ -310,7 +310,7 @@ werden kann.
 
 =head1 VERSION
 
-1.125
+1.131
 
 =head1 AUTHOR
 
