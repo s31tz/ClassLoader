@@ -1,10 +1,10 @@
 package ClassLoader;
 
+use v5.10;
 use strict;
 use warnings;
-use v5.10.0;
 
-our $VERSION = 1.131;
+our $VERSION = '1.195';
 
 # -----------------------------------------------------------------------------
 
@@ -16,9 +16,9 @@ ClassLoader - Lade Perl-Klassen automatisch
 
 =head1 SYNOPSIS
 
-    use ClassLoader;
-    
-    my $obj = My::Class->new; # lädt My/Class.pm
+  use ClassLoader;
+  
+  my $obj = My::Class->new; # lädt My/Class.pm
 
 =head1 DESCRIPTION
 
@@ -29,7 +29,7 @@ Müde, C<use>-Anweisungen für das Laden von Perl-Klassen zu schreiben?
 Dieses Modul reduziert das Laden aller Klassen auf eine
 einzige Anweisung:
 
-    use ClassLoader;
+  use ClassLoader;
 
 Danach werden alle Klassen automatisch mit ihrem ersten
 Methodenaufruf geladen. Dies geschieht bei jeder Methode,
@@ -87,12 +87,12 @@ ihre Basisklassen (sofern vorhanden) selbständig lädt.
 Eine Klasse I<My::Class> wird in einer Datei mit dem Pfad C<My/Class.pm>
 definiert und irgendwo unter C<@INC> installiert. Sie hat den Inhalt:
 
-    package My::Class;
-    use base qw/<BASECLASSES>/;
-    
-    <SOURCE>
-    
-    1;
+  package My::Class;
+  use base qw/<BASECLASSES>/;
+  
+  <SOURCE>
+  
+  1;
 
 Hierbei ist <BASECLASSES> die Liste der Basisklassen und <SOURCE>
 der Quelltext der Klasse (einschließlich der
@@ -118,24 +118,24 @@ eine Exception ausgelöst.
 Die AUTOLOAD-Methode, die I<< ClassLoader >> definiert, ist recht einfach
 (Fehlerbehandlung hier vereinfacht):
 
-    sub AUTOLOAD {
-        my $this = shift;
-        # @_: Methodenargumente
-    
-        my ($class,$sub) = our $AUTOLOAD =~ /^(.*)::(\w+)$/;
-        return if $sub !~ /[^A-Z]/;
-    
-        eval "use $class";
-        if ($@) {
-            die "Modul kann nicht geladen werden\n";
-        }
-    
-        unless ($this->can($sub)) {
-            die "Methode existiert nicht\n";
-        }
-    
-        return $this->$sub(@_);
-    }
+  sub AUTOLOAD {
+      my $this = shift;
+      # @_: Methodenargumente
+  
+      my ($class,$sub) = our $AUTOLOAD =~ /^(.*)::(\w+)$/;
+      return if $sub !~ /[^A-Z]/;
+  
+      eval "use $class";
+      if ($@) {
+          die "Modul kann nicht geladen werden\n";
+      }
+  
+      unless ($this->can($sub)) {
+          die "Methode existiert nicht\n";
+      }
+  
+      return $this->$sub(@_);
+  }
 
 Lediglich der erste Methodenaufruf einer noch nicht geladenen
 Klasse läuft über diese AUTOLOAD-Methode. Alle folgenden
@@ -154,16 +154,16 @@ Fehlers, einschließlich Stacktrace.
 
 Aufbau des Exception-Texts:
 
-    Exception:
-        CLASSLOADER-<N>: <TEXT>
-    Class:
-        <CLASS>
-    Method:
-        <METHOD>()
-    Error:
-        <ERROR>
-    Stacktrace:
-        <STACKTRACE>
+  Exception:
+      CLASSLOADER-<N>: <TEXT>
+  Class:
+      <CLASS>
+  Method:
+      <METHOD>()
+  Error:
+      <ERROR>
+  Stacktrace:
+      <STACKTRACE>
 
 =head2 Kann eine Klasse selbst eine AUTOLOAD-Methode haben?
 
@@ -172,6 +172,40 @@ der Klasse angesprochen. Alle späteren Methoden-Aufrufe der Klasse
 werden über die Klasse selbst aufgelöst. Wenn die Klasse eine
 AUTOLOAD-Methode besitzt, funktioniert diese genau so wie ohne
 I<< ClassLoader >>.
+
+=head1 CAVEATS
+
+=over 2
+
+=item *
+
+Der Mechanismus funktioniert nicht, wenn der Modulpfad anders
+lautet als die Klasse heißt. Solche Module müssen explizit
+per use geladen werden.
+
+=item *
+
+Sind mehrere Klassen in einer Moduldatei definiert, kann das
+automatische Laden logischerweise nur über eine dieser Klassen
+erfolgen. Am besten lädt man solche Module auch explizit.
+
+=item *
+
+Über Aufruf der Methode C<import()> ist es nicht möglich, ein
+Modul automatisch zu laden, da Perl bei Nichtexistenz von
+C<import()> C<AUTOLOAD()> nicht aufruft, sondern den Aufruf
+ignoriert. Man kann durch C<< $class->import() >> also nicht
+das Laden eines Klassen-Moduls auslösen.
+
+=item *
+
+Module, die nicht objektorientiert, sondern Funktionssammlungen
+sind, werden von I<< ClassLoader >> nicht behandelt. Diese sollten
+per C<use> geladen werden. Es gibt im Perl-Core ein Pragma C<autouse>,
+das alternativ zum automatischen Laden von Funktionen verwendet
+werden kann.
+
+=back
 
 =cut
 
@@ -190,7 +224,7 @@ unshift @UNIVERSAL::ISA,'ClassLoader';
 
 =head4 Synopsis
 
-    $this->AUTOLOAD;
+  $this->AUTOLOAD;
 
 =head4 Description
 
@@ -261,12 +295,12 @@ sub AUTOLOAD {
     if ($@) {
         $@ =~ s/ at .*//s;
         $die->($class,$sub,$@,
-            q~CLASSLOADER-00001: Modul kann nicht geladen werden~);
+            'CLASSLOADER-00001: Modul kann nicht geladen werden');
     }
 
     unless ($this->can($sub)) {
         $die->($class,$sub,undef,
-            q~CLASSLOADER-00002: Methode existiert nicht~);
+            'CLASSLOADER-00002: Methode existiert nicht');
     }
 
     return $this->$sub(@_);
@@ -274,43 +308,9 @@ sub AUTOLOAD {
 
 # -----------------------------------------------------------------------------
 
-=head1 CAVEATS
-
-=over 2
-
-=item *
-
-Der Mechanismus funktioniert nicht, wenn der Modulpfad anders
-lautet als die Klasse heißt. Solche Module müssen explizit
-per use geladen werden.
-
-=item *
-
-Sind mehrere Klassen in einer Moduldatei definiert, kann das
-automatische Laden logischerweise nur über eine dieser Klassen
-erfolgen. Am besten lädt man solche Module auch explizit.
-
-=item *
-
-Über Aufruf der Methode C<import()> ist es nicht möglich, ein
-Modul automatisch zu laden, da Perl bei Nichtexistenz von
-C<import()> C<AUTOLOAD()> nicht aufruft, sondern den Aufruf
-ignoriert. Man kann durch C<< $class->import() >> also nicht
-das Laden eines Klassen-Moduls auslösen.
-
-=item *
-
-Module, die nicht objektorientiert, sondern Funktionssammlungen
-sind, werden von I<< ClassLoader >> nicht behandelt. Diese sollten
-per C<use> geladen werden. Es gibt im Perl-Core ein Pragma C<autouse>,
-das alternativ zum automatischen Laden von Funktionen verwendet
-werden kann.
-
-=back
-
 =head1 VERSION
 
-1.131
+1.195
 
 =head1 AUTHOR
 
@@ -318,7 +318,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2019 Frank Seitz
+Copyright (C) 2021 Frank Seitz
 
 =head1 LICENSE
 

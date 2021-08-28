@@ -6,9 +6,9 @@ ClassLoader - Lade Perl-Klassen automatisch
 
 =head1 SYNOPSIS
 
-    use ClassLoader;
-    
-    my $obj = My::Class->new; # lädt My/Class.pm
+  use ClassLoader;
+  
+  my $obj = My::Class->new; # lädt My/Class.pm
 
 =head1 DESCRIPTION
 
@@ -19,7 +19,7 @@ Müde, C<use>-Anweisungen für das Laden von Perl-Klassen zu schreiben?
 Dieses Modul reduziert das Laden aller Klassen auf eine
 einzige Anweisung:
 
-    use ClassLoader;
+  use ClassLoader;
 
 Danach werden alle Klassen automatisch mit ihrem ersten
 Methodenaufruf geladen. Dies geschieht bei jeder Methode,
@@ -77,12 +77,12 @@ ihre Basisklassen (sofern vorhanden) selbständig lädt.
 Eine Klasse I<My::Class> wird in einer Datei mit dem Pfad C<My/Class.pm>
 definiert und irgendwo unter C<@INC> installiert. Sie hat den Inhalt:
 
-    package My::Class;
-    use base qw/<BASECLASSES>/;
-    
-    <SOURCE>
-    
-    1;
+  package My::Class;
+  use base qw/<BASECLASSES>/;
+  
+  <SOURCE>
+  
+  1;
 
 Hierbei ist <BASECLASSES> die Liste der Basisklassen und <SOURCE>
 der Quelltext der Klasse (einschließlich der
@@ -108,24 +108,24 @@ eine Exception ausgelöst.
 Die AUTOLOAD-Methode, die I< ClassLoader > definiert, ist recht einfach
 (Fehlerbehandlung hier vereinfacht):
 
-    sub AUTOLOAD {
-        my $this = shift;
-        # @_: Methodenargumente
-    
-        my ($class,$sub) = our $AUTOLOAD =~ /^(.*)::(\w+)$/;
-        return if $sub !~ /[^A-Z]/;
-    
-        eval "use $class";
-        if ($@) {
-            die "Modul kann nicht geladen werden\n";
-        }
-    
-        unless ($this->can($sub)) {
-            die "Methode existiert nicht\n";
-        }
-    
-        return $this->$sub(@_);
-    }
+  sub AUTOLOAD {
+      my $this = shift;
+      # @_: Methodenargumente
+  
+      my ($class,$sub) = our $AUTOLOAD =~ /^(.*)::(\w+)$/;
+      return if $sub !~ /[^A-Z]/;
+  
+      eval "use $class";
+      if ($@) {
+          die "Modul kann nicht geladen werden\n";
+      }
+  
+      unless ($this->can($sub)) {
+          die "Methode existiert nicht\n";
+      }
+  
+      return $this->$sub(@_);
+  }
 
 Lediglich der erste Methodenaufruf einer noch nicht geladenen
 Klasse läuft über diese AUTOLOAD-Methode. Alle folgenden
@@ -144,16 +144,16 @@ Fehlers, einschließlich Stacktrace.
 
 Aufbau des Exception-Texts:
 
-    Exception:
-        CLASSLOADER-<N>: <TEXT>
-    Class:
-        <CLASS>
-    Method:
-        <METHOD>()
-    Error:
-        <ERROR>
-    Stacktrace:
-        <STACKTRACE>
+  Exception:
+      CLASSLOADER-<N>: <TEXT>
+  Class:
+      <CLASS>
+  Method:
+      <METHOD>()
+  Error:
+      <ERROR>
+  Stacktrace:
+      <STACKTRACE>
 
 =head2 Kann eine Klasse selbst eine AUTOLOAD-Methode haben?
 
@@ -162,27 +162,6 @@ der Klasse angesprochen. Alle späteren Methoden-Aufrufe der Klasse
 werden über die Klasse selbst aufgelöst. Wenn die Klasse eine
 AUTOLOAD-Methode besitzt, funktioniert diese genau so wie ohne
 I< ClassLoader >.
-
-=head1 METHODS
-
-=head2 Autoload-Methode
-
-=head3 AUTOLOAD() - Lade Klassen-Modul
-
-=head4 Synopsis
-
-    $this->AUTOLOAD;
-
-=head4 Description
-
-Die Methode lädt fehlende Klassen-Module und führt ihren ersten
-Methodenaufruf durch. Die Argumente und der Returnwert entsprechen
-denen der gerufenen Methode. Schlägt das Laden des Klassen-Moduls fehl,
-löst die Methode eine Exception aus (siehe oben).
-
-Die AUTOLOAD-Methode implementiert die Funktionalität des
-Moduls ClassLoader. Sie wird nicht direkt, sondern vom
-Perl-Interpreter gerufen, wenn eine Methode nicht gefunden wird.
 
 =head1 CAVEATS
 
@@ -218,9 +197,30 @@ werden kann.
 
 =back
 
+=head1 METHODS
+
+=head2 Autoload-Methode
+
+=head3 AUTOLOAD() - Lade Klassen-Modul
+
+=head4 Synopsis
+
+  $this->AUTOLOAD;
+
+=head4 Description
+
+Die Methode lädt fehlende Klassen-Module und führt ihren ersten
+Methodenaufruf durch. Die Argumente und der Returnwert entsprechen
+denen der gerufenen Methode. Schlägt das Laden des Klassen-Moduls fehl,
+löst die Methode eine Exception aus (siehe oben).
+
+Die AUTOLOAD-Methode implementiert die Funktionalität des
+Moduls ClassLoader. Sie wird nicht direkt, sondern vom
+Perl-Interpreter gerufen, wenn eine Methode nicht gefunden wird.
+
 =head1 VERSION
 
-1.131
+1.195
 
 =head1 AUTHOR
 
@@ -228,7 +228,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2019 Frank Seitz
+Copyright (C) 2021 Frank Seitz
 
 =head1 LICENSE
 
